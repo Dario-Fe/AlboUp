@@ -79,45 +79,31 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
 }
 
-.brand { display: flex; align-items: flex-start; gap: 12px; min-width: 0; }
+/* riga 1: icona + nome a sinistra, toggle tema e link a destra */
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
 
 .brand-ico {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   flex-shrink: 0;
   display: inline-flex;
-  margin-top: 1px;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,.25));
 }
-.brand-ico svg { width: 100%; height: 100%; display: block; border-radius: 9px; }
+.brand-ico svg { width: 100%; height: 100%; display: block; border-radius: 8px; }
 
-.brand-txt { min-width: 0; }
-.brand-txt h1 { margin: 0; font-size: 1.25rem; letter-spacing: .2px; }
-.brand-txt p {
-  margin: 0;
-  font-size: .8rem;
+.brand h1 { margin: 0; font-size: 1.25rem; letter-spacing: .2px; }
+
+.header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+
+/* riga 2: sottotitolo completo, a larghezza di pagina */
+.header-sub {
+  margin: 4px 0 0;
+  font-size: .78rem;
+  line-height: 1.35;
   opacity: .85;
-  white-space: nowrap;      /* il sottotitolo resta su una riga */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-
-/* colonna di link sotto il pulsante "Sito ufficiale" (stessi ingombri) */
-.header-links {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-}
-.header-links .infolink {
-  font-size: .72rem;
-  font-weight: 600;
-  padding: 4px 10px;
 }
 
 .official-link {
@@ -186,9 +172,10 @@ body {
   color: var(--on-primary);
 }
 
-/* schermi stretti: tab più compatte per tentare la riga singola */
+/* schermi stretti: tab compatte per stare su una riga sopra la ricerca */
 @media (max-width: 420px) {
-  .tab { padding: 8px 12px; font-size: .86rem; gap: 5px; }
+  .tabs { margin-top: 14px; }
+  .tab { padding: 6px 10px; font-size: .78rem; gap: 4px; }
 }
 
 /* ---------- Toolbar ---------- */
@@ -655,19 +642,18 @@ body {
 
 /* ---------- Responsive ---------- */
 
-/* schermi stretti: header compatto, sottotitolo breve su una riga */
+/* schermi stretti: header compatto, sottotitolo sempre completo */
 @media (max-width: 560px) {
-  .site-header { padding: 12px 0 14px; }
-  .brand-ico { width: 32px; height: 32px; }
-  .brand-txt h1 { font-size: 1.12rem; }
-  .brand-txt p { font-size: .74rem; }
-  .sub-extra { display: none; }  /* via la parte finale del sottotitolo */
-  .official-link { padding: 6px 11px; font-size: .78rem; }
-  .header-links .infolink { font-size: .68rem; padding: 3px 8px; }
+  .site-header { padding: 10px 0 12px; }
+  .brand-ico { width: 30px; height: 30px; }
+  .brand h1 { font-size: 1.12rem; }
+  .header-sub { font-size: .74rem; }
+  .official-link { padding: 5px 9px; font-size: .74rem; }
+  .theme-toggle svg { width: 20px; height: 20px; }
 }
 
 @media (min-width: 640px) {
-  .brand-txt h1 { font-size: 1.4rem; }
+  .brand h1 { font-size: 1.4rem; }
   .card-title { font-size: 1.05rem; }
   .detail-card { padding: 26px 28px 30px; }
   .d-title { font-size: 1.4rem; }
