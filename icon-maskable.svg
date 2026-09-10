@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>AlboUp</title>
+  <!-- sfondo a tutto campo: la zona sicura per le maschere è il cerchio centrale (raggio 205) -->
+  <rect width="512" height="512" fill="#0b4fd8"/>
+  <!-- porticato della facciata, rimpicciolito e centrato per stare nella safe zone -->
+  <g transform="translate(96 96) scale(5)">
+    <path d="M12 25 32 13l20 12" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="13" y1="30" x2="51" y2="30" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="20" y1="35" x2="20" y2="43" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="28" y1="35" x2="28" y2="43" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="36" y1="35" x2="36" y2="43" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="44" y1="35" x2="44" y2="43" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="16" y1="47" x2="48" y2="47" stroke="#93c5fd" stroke-width="2.6" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="AlboUp — l'Albo Pretorio del Comune di Verbania, letto in modo semplice e moderno: atti in pubblicazione, archivio, ricerca rapida e link alla pagina ufficiale di ogni atto." />
+  <meta name="theme-color" content="#0b4fd8" />
+  <title>AlboUp — Gli atti del Comune di Verbania, facilmente accessibili</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <span class="brand-ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="64" height="64" rx="14" fill="#0b4fd8"/>
+            <path d="M12 25 32 13l20 12" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="13" y1="31" x2="51" y2="31" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="20" y1="37" x2="20" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="28" y1="37" x2="28" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="36" y1="37" x2="36" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="44" y1="37" x2="44" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="15" y1="52" x2="49" y2="52" stroke="#93c5fd" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div class="brand-txt">
+          <h1>AlboUp</h1>
+          <p>Gli atti del Comune di Verbania, facilmente accessibili</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-btn theme-toggle" type="button"
+                title="Passa al tema chiaro" aria-label="Cambia tema: passa al tema chiaro">
+          <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="9.5" fill="#ffffff" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M11 1.5 A9.5 9.5 0 0 0 11 20.5 Z" fill="#0e1420"/>
+          </svg>
+        </button>
+        <div class="header-links">
+          <a class="official-link" href="https://verbania.trasparenza-valutazione-merito.it/web/trasparenza/albo-pretorio" target="_blank" rel="noopener">Sito ufficiale ↗</a>
+          <a class="official-link infolink" href="infoutili.html">Info utili ℹ️</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <nav class="tabs" role="tablist" aria-label="Sezioni albo">
+      <button class="tab active" id="tab-albo" role="tab" aria-selected="true" data-tab="albo">
+        <span class="tab-ico" aria-hidden="true">📌</span> In pubblicazione
+      </button>
+      <button class="tab" id="tab-storico" role="tab" aria-selected="false" data-tab="storico">
+        <span class="tab-ico" aria-hidden="true">🗂️</span> Archivio
+      </button>
+      <button class="tab" id="tab-matrimoni" role="tab" aria-selected="false" data-tab="matrimoni">
+        <span class="tab-ico" aria-hidden="true">💍</span> Matrimoni
+      </button>
+    </nav>
+
+    <section class="toolbar" aria-label="Ricerca e filtri">
+      <div class="searchbox">
+        <span class="search-ico" aria-hidden="true">🔎</span>
+        <input id="searchInput" type="search" inputmode="search"
+               placeholder="Cerca nell'albo… (es. biblioteca, lavori pubblici, CIG)"
+               autocomplete="off" spellcheck="false" aria-label="Cerca atti per oggetto" />
+        <button id="searchClear" class="icon-btn hidden" title="Cancella ricerca" aria-label="Cancella ricerca">✕</button>
+      </div>
+      <div class="chips" id="catChips" role="group" aria-label="Filtra per tipo di atto"></div>
+    </section>
+
+    <div class="statusline" id="statusLine" aria-live="polite"></div>
+
+    <section id="listView" class="cards" aria-label="Elenco atti"></section>
+
+    <div class="loadmore-zone">
+      <button id="loadMore" class="btn-secondary hidden">Carica altri atti ↓</button>
+      <p id="loadMoreNote" class="muted-note hidden">La ricerca mostra i primi 20 risultati · usa parole più specifiche per affinare</p>
+      <button id="toTop" class="icon-btn to-top hidden" title="Torna su" aria-label="Torna all'inizio">↑</button>
+    </div>
+
+  </main>
+
+  <!-- ============ DETTAGLIO (overlay) ============ -->
+  <div id="detailOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="overlay-bar wrap">
+      <button id="detailBack" class="btn-secondary">← Torna all'elenco</button>
+      <button id="detailCopy" class="btn-secondary" title="Copia link alla scheda">🔗 Copia link</button>
+    </div>
+    <article id="detailCard" class="wrap detail-card"></article>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><strong>App non ufficiale</strong> di lettura semplificata — tutti i dati provengono dall'
+        <a href="https://verbania.trasparenza-valutazione-merito.it/web/trasparenza/albo-pretorio" target="_blank" rel="noopener">Albo Pretorio del Comune di Verbania</a>.
+        Per gli atti fa fede esclusivamente la pubblicazione sul sito istituzionale.</p>
+      <p class="muted" id="lastUpdate">—</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <!-- ============ SCHERMATA INIZIALE (splash) ============ -->
+  <div id="splash" class="splash" aria-hidden="true">
+    <div class="splash-ico">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="64" height="64" rx="14" fill="#0b4fd8"/>
+        <path d="M12 25 32 13l20 12" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="13" y1="31" x2="51" y2="31" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="20" y1="37" x2="20" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="28" y1="37" x2="28" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="36" y1="37" x2="36" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="44" y1="37" x2="44" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="15" y1="52" x2="49" y2="52" stroke="#93c5fd" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <p class="splash-name">Albo<span>Up</span></p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

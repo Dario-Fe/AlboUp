@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Info utili su AlboUp: come funziona, come installarla come app, origine dei dati e trasparenza." />
+  <title>Info utili — AlboUp</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <script>
+    // tema scuro predefinito, coerente con l'app (prima che il CSS venga applicato)
+    try { document.documentElement.dataset.theme = localStorage.getItem('alboVrb:theme') || 'dark'; } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* stili specifici della pagina Info utili */
+    .info-main { margin: 22px auto 40px; }
+    .info-title { font-size: 1.35rem; margin: 0 0 16px; }
+    .info-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .info-section h2 { margin: 0 0 10px; font-size: 1.08rem; }
+    .info-section p { margin: 0 0 10px; font-size: .95rem; }
+    .info-section p:last-child { margin-bottom: 0; }
+    .info-section ul { margin: 0 0 10px; padding-left: 1.25rem; font-size: .95rem; }
+    .info-section li { margin-bottom: 6px; }
+    .info-note {
+      background: var(--primary-soft);
+      border: 1px solid var(--primary);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 12px;
+      font-size: .92rem;
+    }
+    .install-cols { display: grid; gap: 12px; }
+    @media (min-width: 640px) { .install-cols { grid-template-columns: 1fr 1fr; } }
+    .install-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: .92rem;
+    }
+    .install-box strong { display: block; margin-bottom: 6px; }
+    .install-box ul { margin: 0; padding-left: 1.15rem; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--primary); text-decoration: none;
+      font-weight: 600; font-size: .92rem; margin-bottom: 14px;
+    }
+    .back-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .info-footer { text-align: center; font-size: .8rem; color: var(--text-muted); padding: 10px 0 34px; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" style="text-decoration:none; color:inherit;">
+        <span class="brand-ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="64" height="64" rx="14" fill="#0b4fd8"/>
+            <path d="M12 25 32 13l20 12" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="13" y1="31" x2="51" y2="31" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="20" y1="37" x2="20" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="28" y1="37" x2="28" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="36" y1="37" x2="36" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="44" y1="37" x2="44" y2="47" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="15" y1="52" x2="49" y2="52" stroke="#93c5fd" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div class="brand-txt">
+          <h1>AlboUp</h1>
+          <p>Gli atti del Comune di Verbania, facilmente accessibili</p>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <main class="wrap info-main">
+    <a class="back-link" href="index.html">← Torna all'elenco degli atti</a>
+    <h2 class="info-title">AlboUp — Info utili</h2>
+
+    <section class="info-section">
+      <p>
+        <strong>AlboUp</strong> nasce con un obiettivo chiaro: rendere <strong>semplice e immediata la lettura
+        dell'Albo Pretorio del Comune di Verbania</strong>, i cui atti sono pubblicati su un portale
+        istituzionale ricco ma complesso, con dati nascosti in sottopagine e tabelle difficili da leggere.
+      </p>
+      <p>Parte della suite <em>Up</em> (BenzUp, JobUp, AlboUp) di strumenti gratuiti per il territorio verbanese.</p>
+    </section>
+
+    <section class="info-section">
+      <h2>⚙️ Come funziona</h2>
+      <ul>
+        <li>Ogni card mostra subito l'<strong>essenziale</strong>: tipo di atto, oggetto, numero, data, allegati e flag "nuovo".</li>
+        <li>Un tocco apre la <strong>scheda dettaglio</strong> con tutti i campi ufficiali e gli allegati scaricabili.</li>
+        <li>La sezione <strong>Archivio</strong> "scorre all'ingiù": con "Carica altri atti" risali tutto lo storico, dal più recente al più vecchio.</li>
+        <li>La <strong>ricerca</strong> interroga l'archivio per oggetto (es. "biblioteca", "lavori pubblici", un CIG) e le <strong>chip</strong> filtrano per tipo di atto: determinazioni, delibere, decreti, ordinanze.</li>
+        <li>Le sezioni <strong>In pubblicazione</strong>, <strong>Archivio</strong> e <strong>Matrimoni</strong> riprendono le tre aree dell'albo istituzionale.</li>
+      </ul>
+      <p>I contenuti si aggiornano in tempo reale ad ogni apertura: la cache locale serve solo a rendere l'avvio più rapido e a funzionare offline.</p>
+    </section>
+
+    <section class="info-section">
+      <h2>🔗 Il legame con il sito ufficiale</h2>
+      <p>
+        Ogni scheda riporta sempre il pulsante <strong>"Pagina ufficiale dell'atto"</strong>, che apre il documento
+        originale sul portale del Comune. Per gli atti fa fede esclusivamente la pubblicazione sul sito istituzionale:
+        AlboUp è un <strong>assistente di lettura</strong>, non una fonte alternativa.
+      </p>
+      <p>
+        Gli allegati sono proposti nella <strong>versione PDF normale</strong>, apribile da qualsiasi dispositivo.
+        Quando esiste anche la <strong>versione firmata digitalmente</strong> (.p7m), è disponibile come link
+        secondario: per aprirla serve un apposito lettore di firme.
+      </p>
+    </section>
+
+    <section class="info-section">
+      <h2>📲 Come installarla come app</h2>
+      <p>Puoi aggiungere AlboUp alla schermata home e usarla come un'app vera, a schermo intero:</p>
+      <div class="install-cols">
+        <div class="install-box">
+          <strong>📱 Su Android (Chrome):</strong>
+          <ul>
+            <li>Tocca i tre puntini <strong>⋮</strong> in alto a destra.</li>
+            <li>Seleziona <strong>"Installa app"</strong> oppure <strong>"Aggiungi a schermata Home"</strong>.</li>
+          </ul>
+        </div>
+        <div class="install-box">
+          <strong>🍎 Su iPhone (Safari):</strong>
+          <ul>
+            <li>Tocca l'icona di condivisione <strong>↑</strong> (il quadrato con la freccia).</li>
+            <li>Scorri e scegli <strong>"Aggiungi alla schermata Home"</strong>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-note">
+        💡 <strong>Consiglio:</strong> una volta installata, apri AlboUp dall'icona in home: partirà senza
+        barre del browser, con l'ultima sezione e il tema che avevi lasciato.
+      </div>
+    </section>
+
+    <section class="info-section">
+      <h2>🧭 Come usare la scheda atto</h2>
+      <ul>
+        <li><strong>🔗 Copia link</strong> — copia il link diretto alla scheda (utile per inoltrare un atto specifico).</li>
+        <li><strong>Apri PDF ↓</strong> — scarica o apre l'allegato in versione PDF normale.</li>
+        <li><strong>Versione firmata (.p7m)</strong> — versione con firma digitale, da usare se serve validità legale.</li>
+        <li><strong>📄 Pagina ufficiale dell'atto ↗</strong> — il documento sul portale del Comune.</li>
+      </ul>
+    </section>
+
+    <section class="info-section">
+      <h2>⚠️ Limiti tecnici</h2>
+      <p>
+        Il portale istituzionale non offre API pubbliche: AlboUp legge le stesse pagine dell'albo attraverso un
+        servizio di transito. Se il sito del Comune viene modificato o il servizio di transito è momentaneamente
+        occupato, l'app potrebbe non caricare i dati: in quel caso viene mostrato il link diretto al sito ufficiale.
+        I <strong>PDF degli allegati</strong> e le <strong>firme digitali</strong> restano comunque sul portale ufficiale.
+      </p>
+    </section>
+
+    <section class="info-section">
+      <h2>🤝 Trasparenza</h2>
+      <p>
+        AlboUp è un'iniziativa privata, volontaria e completamente gratuita, a favore della lettura degli atti
+        pubblici. <strong>Non è affiliata né approvata dal Comune di Verbania.</strong> I dati appartengono
+        all'Albo Pretorio ufficiale del Comune di Verbania.
+      </p>
+    </section>
+
+    <p class="info-footer">
+      AlboUp · app non ufficiale di lettura dell'Albo Pretorio del Comune di Verbania
+    </p>
+  </main>
+
+  <script>
+    // La pagina NON ha un selettore di tema: segue sempre quello impostato
+    // nella pagina principale (stessa chiave "alboVrb:theme" in localStorage,
+    // letta all'avvio nel <head>). Se il tema viene cambiato nella pagina
+    // principale mentre questa è aperta in un'altra scheda, si aggiorna live.
+    window.addEventListener('storage', function (e) {
+      if (e.key === 'alboVrb:theme' && e.newValue) {
+        document.documentElement.dataset.theme = e.newValue;
+      }
+    });
+  </script>
+
+</body>
+</html>
