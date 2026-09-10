@@ -241,12 +241,13 @@ body {
 /* ---------- Status ---------- */
 
 .statusline {
-  min-height: 22px;
   margin: 10px 0 4px;
   font-size: .88rem;
   color: var(--text-muted);
 }
 .statusline.error { color: var(--danger); font-weight: 600; }
+/* nessun messaggio = nessuno spazio sprecato tra le chip e la prima card */
+.statusline:empty { margin: 0; min-height: 0; }
 
 .spinner {
   display: inline-block;
@@ -267,7 +268,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 8px 0 12px;
+  padding: 4px 0 12px;
 }
 
 .card {
