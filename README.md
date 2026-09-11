@@ -5,7 +5,8 @@
 Web app (HTML + CSS + JavaScript puri, zero dipendenze) per leggere in modo
 semplice e moderno l'**Albo Pretorio del Comune di Verbania**, i cui dati
 istituzionali sono nascosti in sottopagine e tabelle complesse.
-Disponibile su: [alboupob.netlify.app](https://alboup.netlify.app/)
+
+Disponibile su: [alboup.netlify.app](https://alboup.netlify.app/)
 
 **Ispirazione**: [job-up.netlify.app](https://job-up.netlify.app/)
 
